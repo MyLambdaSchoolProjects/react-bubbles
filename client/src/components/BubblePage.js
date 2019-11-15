@@ -24,6 +24,8 @@ const BubblePage = () => {
 
   return (
     <>
+      <button onClick={()=> {localStorage.clear();
+        window.location.href = '/';}}>Logout</button>
       <ColorList 
         colors={colorList} 
         updateColors={setColorList} 

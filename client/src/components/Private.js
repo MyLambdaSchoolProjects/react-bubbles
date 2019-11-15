@@ -1,14 +1,19 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-
-export default function PrivateRoute({ component: Component, ...rest }) {
+export default function PrivateRoute({ children, ...rest }) {
   console.log("...rest", rest);
   return (
     <Route
       {...rest}
-      render={() =>
-        localStorage.getItem("token") ? <Component /> : <Redirect to="/" />
+      render={({ location }) =>
+      localStorage.getItem("token") ? (
+          children
+        ) : (
+          <Redirect
+            to='/'
+          />
+        )
       }
     />
   );
